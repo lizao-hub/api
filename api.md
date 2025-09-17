@@ -21,11 +21,11 @@ if __name__ == '__main__':
 
 请求对象包含了客户端发送的请求信息，包括请求方法、URL、请求头、表单数据等。Flask 提供了 request 对象来访问这些信息。
 
-![image-20250917102621661](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917102621661.png)
+![image-20250917102621661](image\image-20250917102621661.png)
 
 以post一个csv为例：
 
-![image-20250917123845014](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917123845014.png)
+![image-20250917123845014](image\image-20250917123845014.png)
 
 ```python
 @app.route('/upload', methods=['POST'])
@@ -65,7 +65,7 @@ app.run(debug=True)
 
 第十八行的file不能直接使用（不能直接用pandas）需要根据filename保存下来然后在用pandas读取
 
-file.filename直接读取文件名![image-20250917123821484](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917123821484.png)
+file.filename直接读取文件名![image-20250917123821484](image\image-20250917123821484.png)
 
 **注意：这是因为 `df.columns` 返回的是一个 **Pandas 的 `Index` 对象**，而 Python 的 JSON 模块（以及 Flask 的 `jsonify`）**无法直接序列化非原生数据类型**（如 `Index`、`DataFrame`、`Series` 等**
 
@@ -73,7 +73,7 @@ file.filename直接读取文件名![image-20250917123821484](C:\Users\JZ\AppData
 
 ### 直接返回处理后的文件vs分步
 
-![image-20250917133912752](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917133912752.png)
+![image-20250917133912752](image\image-20250917133912752.png)
 
 #### 直接返回
 
@@ -188,7 +188,7 @@ def upload_file():
         return jsonify({"error": str(e)}), 500
 ```
 
-![image-20250917140255028](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917140255028.png)
+![image-20250917140255028](image\image-20250917140255028.png)
 
 ##### get api
 
@@ -218,7 +218,7 @@ if __name__ == '__main__':
 
 **上述代码中@app.route('/download/<task_id>', methods=['GET'])的<task_id>的task_id作为函数download_file的参数**
 
-![image-20250917140432608](C:\Users\JZ\AppData\Roaming\Typora\typora-user-images\image-20250917140432608.png)
+![image-20250917140432608](image\image-20250917140432608.png)
 
 ## app启动方法
 
